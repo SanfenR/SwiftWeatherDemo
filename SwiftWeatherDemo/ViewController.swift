@@ -46,8 +46,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
             print(location.coordinate.latitude)
             print(location.coordinate.longitude)
 
-//            self.updateWeatherInfo(location.coordinate.latitude,
-//                    location.coordinate.longitude)
+            self.updateWeatherInfo(latitude: location.coordinate.latitude,
+                    longitude: location.coordinate.longitude)
 
 
             locationManager.stopUpdatingLocation()
@@ -57,14 +57,16 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     func updateWeatherInfo(latitude: CLLocationDegrees,
                            longitude: CLLocationDegrees) {
         let manager = AFHTTPSessionManager()
-        let url = "http://api.openweathermap.org/data/2.5/weather"
-        let params = ["lat": latitude, "lon": longitude, "cnt": 0]
-        manager.get(url,parameters: params,
+        let url = "https://api.openweathermap.org/data/2.5/weather"
+        let params = ["lat": latitude, "lon": longitude, "cnt": 0, "appid": "4f4be8fe7031dddd5dec789e01c1b3ac"]
+        manager.get(url, parameters: params,
                 success: {
-                    (operation: URLSessionDataTask!, responseObiect: Any!) in print("JSON:" + (responseObiect as AnyObject).description)
+                    (operation: URLSessionDataTask!, responseObiect: Any!) in
+                    print("JSON:" + (responseObiect as AnyObject).description)
                 },
                 failure: {
-                    (operation: URLSessionDataTask?, error: Error!) in print("Error:" + error.localizedDescription)
+                    (operation: URLSessionDataTask?, error: Error!) in
+                    print("Error:" + error.localizedDescription)
                 })
 
     }
