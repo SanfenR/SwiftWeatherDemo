@@ -47,6 +47,7 @@
 		B3D151C14489F840FF67999C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B3D1522C01284DBA70418B8D /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = file.gitignore; path = .gitignore; sourceTree = "<group>"; };
 		B3D15386647B9BF1987FB634 /* SwiftWeatherDemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftWeatherDemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		B3D154E4C96C2F49A4B52C59 /* SwiftWeatherBridgingHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SwiftWeatherBridgingHeader.h; sourceTree = "<group>"; };
 		B3D155A4B1AB946B876A7E84 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.info; path = Info.plist; sourceTree = "<group>"; };
 		B3D155EF657CCE5759BF36CE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.info; path = Info.plist; sourceTree = "<group>"; };
 		B3D155F9602B36D1A7BFADDB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -151,6 +152,7 @@
 				B3D1569D15EEC88F54DAE10E /* AppDelegate.swift */,
 				B3D151D0B81698B276B18F85 /* Main.storyboard */,
 				B3D15BE8AC8704CDEE235867 /* ViewController.swift */,
+				B3D154E4C96C2F49A4B52C59 /* SwiftWeatherBridgingHeader.h */,
 			);
 			path = SwiftWeatherDemo;
 			sourceTree = "<group>";
@@ -311,10 +313,12 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-SwiftWeatherDemo/Pods-SwiftWeatherDemo-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/AFNetworking/AFNetworking.framework",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AFNetworking.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -508,6 +512,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = co.sanfen.ios.SwiftWeatherDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = SwiftWeatherDemo/SwiftWeatherBridgingHeader.h;
 				SWIFT_VERSION = 3.1;
 			};
 			name = Debug;
@@ -598,6 +603,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = co.sanfen.ios.SwiftWeatherDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = SwiftWeatherDemo/SwiftWeatherBridgingHeader.h;
 				SWIFT_VERSION = 3.1;
 			};
 			name = Release;
@@ -691,6 +697,7 @@
 				B3D15F58A97CEE03F53D4A3C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		B3D15AFFB16F98264B63350B /* Build configuration list for PBXNativeTarget "SwiftWeatherDemoUITests" */ = {
 			isa = XCConfigurationList;
@@ -699,6 +706,7 @@
 				B3D1578762D992CC16A303D4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		B3D15EED345AD3D08559F951 /* Build configuration list for PBXNativeTarget "SwiftWeatherDemo" */ = {
 			isa = XCConfigurationList;
@@ -707,6 +715,7 @@
 				B3D1577A02B8086A5C9F4CE2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

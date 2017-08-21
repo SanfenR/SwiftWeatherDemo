@@ -8,6 +8,7 @@ target 'SwiftWeatherDemo' do
 
   # Pods for SwiftWeatherDemo
   pod 'Alamofire'
+  pod 'AFNetworking'
 
   target 'SwiftWeatherDemoTests' do
     inherit! :search_paths

@@ -12,7 +12,7 @@
         <!--View Controller-->
         <scene sceneID="POh-pJ-tv0">
             <objects>
-                <viewController id="xgg-0h-L04" sceneMemberID="viewController">
+                <viewController id="xgg-0h-L04" customClass="ViewController" customModule="SwiftWeatherDemo" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="nZ6-kI-Jfr"/>
                         <viewControllerLayoutGuide type="bottom" id="7tj-IJ-zIu"/>

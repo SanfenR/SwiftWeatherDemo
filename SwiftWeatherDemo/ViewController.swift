@@ -7,13 +7,25 @@
 //
 
 import UIKit
+import CoreLocation
 
+class ViewController: UIViewController, CLLocationManagerDelegate {
 
-class ViewController: UIViewController {
-
+    let locationManager = CLLocationManager()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+
+        locationManager.delegate = self
+
+        locationManager.desiredAccuracy =
+                kCLLocationAccuracyBest
+
+     //   if(ios8()) {
+        locationManager.requestAlwaysAuthorization()
+       // }
+        locationManager.startUpdatingLocation()
     }
 
     override func didReceiveMemoryWarning() {
@@ -22,4 +34,36 @@ class ViewController: UIViewController {
     }
 
 
+    func ios8() -> Bool{
+        return UIDevice.current.systemVersion == "8.0"
+    }
+
+
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        let location = locations[locations.count - 1]
+        if(location.horizontalAccuracy > 0) {
+            print(location.coordinate.latitude)
+            print(location.coordinate.longitude)
+
+            self.updateWeatherInfo(location.coordinate.latitude,
+                    location.coordinate.longitude)
+
+            locationManager.stopUpdatingLocation()
+        }
+    }
+
+    func updateWeatherInfo(latitude: CLLocationDegrees,
+                           longitude: CLLocationDegrees){
+
+        let manager = AFHTTPRequestOperationManager()
+
+        let url = "http://api.openweathermap.org/data/2.5/weather"
+
+    }
+
+
+
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        print(error)
+    }
 }
