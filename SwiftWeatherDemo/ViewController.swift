@@ -9,11 +9,17 @@
 import UIKit
 import CoreLocation
 import AFNetworking
+import NSDescription
 
 class ViewController: UIViewController, CLLocationManagerDelegate {
 
     let locationManager = CLLocationManager()
 
+    @IBOutlet weak var location: UILabel!
+    @IBOutlet weak var icon: UIImageView!
+    @IBOutlet weak var temperature: UILabel!
+  
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -45,20 +51,17 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         if (location.horizontalAccuracy > 0) {
             print(location.coordinate.latitude)
             print(location.coordinate.longitude)
-
             self.updateWeatherInfo(latitude: location.coordinate.latitude,
                     longitude: location.coordinate.longitude)
-
-
             locationManager.stopUpdatingLocation()
         }
     }
 
     func updateWeatherInfo(latitude: CLLocationDegrees,
                            longitude: CLLocationDegrees) {
+
         let manager = AFHTTPSessionManager()
         let url = "https://api.openweathermap.org/data/2.5/weather"
-
         let appId = "4f4be8fe7031dddd5dec789e01c1b3ac"
         let params = ["lat": latitude,
                       "lon": longitude,
@@ -70,11 +73,17 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
                 success: { (operation: URLSessionDataTask!, responseObject: Any!)
                 in
                     print("JSON: " + (responseObject as AnyObject).description)
+                    updateUISuccess(responseObject as NSDescription)
                 },
                 failure: { (operation: URLSessionDataTask?, error: Error!)
                 in
                     print("Error: " + error.localizedDescription)
                 })
+
+
+    }
+
+    private func updateUISuccess(_ v: NSDescription) {
 
     }
 
