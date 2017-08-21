@@ -58,15 +58,22 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
                            longitude: CLLocationDegrees) {
         let manager = AFHTTPSessionManager()
         let url = "https://api.openweathermap.org/data/2.5/weather"
-        let params = ["lat": latitude, "lon": longitude, "cnt": 0, "appid": "4f4be8fe7031dddd5dec789e01c1b3ac"]
+
+        let appId = "4f4be8fe7031dddd5dec789e01c1b3ac"
+        let params = ["lat": latitude,
+                      "lon": longitude,
+                      "appid": appId,
+                      "cnt": 0] as [String: Any]
+
         manager.get(url, parameters: params,
-                success: {
-                    (operation: URLSessionDataTask!, responseObiect: Any!) in
-                    print("JSON:" + (responseObiect as AnyObject).description)
+                progress: { (progress: Progress) in print("progress") },
+                success: { (operation: URLSessionDataTask!, responseObject: Any!)
+                in
+                    print("JSON: " + (responseObject as AnyObject).description)
                 },
-                failure: {
-                    (operation: URLSessionDataTask?, error: Error!) in
-                    print("Error:" + error.localizedDescription)
+                failure: { (operation: URLSessionDataTask?, error: Error!)
+                in
+                    print("Error: " + error.localizedDescription)
                 })
 
     }
