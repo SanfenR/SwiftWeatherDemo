@@ -8,11 +8,12 @@
 
 import UIKit
 import CoreLocation
+import AFNetworking
 
 class ViewController: UIViewController, CLLocationManagerDelegate {
 
     let locationManager = CLLocationManager()
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -22,9 +23,9 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         locationManager.desiredAccuracy =
                 kCLLocationAccuracyBest
 
-     //   if(ios8()) {
+        // if(ios8()) {
         locationManager.requestAlwaysAuthorization()
-       // }
+        // }
         locationManager.startUpdatingLocation()
     }
 
@@ -34,34 +35,39 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     }
 
 
-    func ios8() -> Bool{
+    func ios8() -> Bool {
         return UIDevice.current.systemVersion == "8.0"
     }
 
 
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let location = locations[locations.count - 1]
-        if(location.horizontalAccuracy > 0) {
+        if (location.horizontalAccuracy > 0) {
             print(location.coordinate.latitude)
             print(location.coordinate.longitude)
 
-            self.updateWeatherInfo(location.coordinate.latitude,
-                    location.coordinate.longitude)
+//            self.updateWeatherInfo(location.coordinate.latitude,
+//                    location.coordinate.longitude)
+
 
             locationManager.stopUpdatingLocation()
         }
     }
 
     func updateWeatherInfo(latitude: CLLocationDegrees,
-                           longitude: CLLocationDegrees){
-
-        let manager = AFHTTPRequestOperationManager()
-
+                           longitude: CLLocationDegrees) {
+        let manager = AFHTTPSessionManager()
         let url = "http://api.openweathermap.org/data/2.5/weather"
+        let params = ["lat": latitude, "lon": longitude, "cnt": 0]
+        manager.get(url,parameters: params,
+                success: {
+                    (operation: URLSessionDataTask!, responseObiect: Any!) in print("JSON:" + (responseObiect as AnyObject).description)
+                },
+                failure: {
+                    (operation: URLSessionDataTask?, error: Error!) in print("Error:" + error.localizedDescription)
+                })
 
     }
-
-
 
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print(error)

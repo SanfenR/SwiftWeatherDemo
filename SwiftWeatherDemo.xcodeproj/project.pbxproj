@@ -42,12 +42,12 @@
 		33CB3485F19468DAF8DD6215 /* Pods-SwiftWeatherDemoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftWeatherDemoTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftWeatherDemoTests/Pods-SwiftWeatherDemoTests.release.xcconfig"; sourceTree = "<group>"; };
 		675892CC3B101BF8799A06E7 /* Pods-SwiftWeatherDemoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftWeatherDemoTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftWeatherDemoTests/Pods-SwiftWeatherDemoTests.debug.xcconfig"; sourceTree = "<group>"; };
 		8FCBF1DA48B46DEF39D570AD /* Pods_SwiftWeatherDemoUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftWeatherDemoUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A25E0B871F4ACEAA009A5921 /* SwiftWeatherDemo-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SwiftWeatherDemo-Bridging-Header.h"; sourceTree = "<group>"; };
 		B050145F2B576248C936E54D /* Pods-SwiftWeatherDemoUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftWeatherDemoUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftWeatherDemoUITests/Pods-SwiftWeatherDemoUITests.release.xcconfig"; sourceTree = "<group>"; };
 		B3D150D570548CE37AB3DF65 /* SwiftWeatherDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftWeatherDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B3D151C14489F840FF67999C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B3D1522C01284DBA70418B8D /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = file.gitignore; path = .gitignore; sourceTree = "<group>"; };
 		B3D15386647B9BF1987FB634 /* SwiftWeatherDemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftWeatherDemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		B3D154E4C96C2F49A4B52C59 /* SwiftWeatherBridgingHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SwiftWeatherBridgingHeader.h; sourceTree = "<group>"; };
 		B3D155A4B1AB946B876A7E84 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.info; path = Info.plist; sourceTree = "<group>"; };
 		B3D155EF657CCE5759BF36CE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.info; path = Info.plist; sourceTree = "<group>"; };
 		B3D155F9602B36D1A7BFADDB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -152,7 +152,7 @@
 				B3D1569D15EEC88F54DAE10E /* AppDelegate.swift */,
 				B3D151D0B81698B276B18F85 /* Main.storyboard */,
 				B3D15BE8AC8704CDEE235867 /* ViewController.swift */,
-				B3D154E4C96C2F49A4B52C59 /* SwiftWeatherBridgingHeader.h */,
+				A25E0B871F4ACEAA009A5921 /* SwiftWeatherDemo-Bridging-Header.h */,
 			);
 			path = SwiftWeatherDemo;
 			sourceTree = "<group>";
@@ -314,12 +314,10 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-SwiftWeatherDemo/Pods-SwiftWeatherDemo-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/AFNetworking/AFNetworking.framework",
-				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AFNetworking.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -512,7 +510,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = co.sanfen.ios.SwiftWeatherDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = SwiftWeatherDemo/SwiftWeatherBridgingHeader.h;
+				SWIFT_OBJC_BRIDGING_HEADER = "SwiftWeatherDemo/SwiftWeatherDemo-Bridging-Header.h";
 				SWIFT_VERSION = 3.1;
 			};
 			name = Debug;
@@ -603,7 +601,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = co.sanfen.ios.SwiftWeatherDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = SwiftWeatherDemo/SwiftWeatherBridgingHeader.h;
+				SWIFT_OBJC_BRIDGING_HEADER = "SwiftWeatherDemo/SwiftWeatherDemo-Bridging-Header.h";
 				SWIFT_VERSION = 3.1;
 			};
 			name = Release;

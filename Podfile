@@ -7,7 +7,7 @@ target 'SwiftWeatherDemo' do
   use_frameworks!
 
   # Pods for SwiftWeatherDemo
-  pod 'Alamofire'
+  # pod 'Alamofire'
   pod 'AFNetworking'
 
   target 'SwiftWeatherDemoTests' do
