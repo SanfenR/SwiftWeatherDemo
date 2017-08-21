@@ -7,7 +7,7 @@ target 'SwiftWeatherDemo' do
   use_frameworks!
 
   # Pods for SwiftWeatherDemo
-Pod Alamofire
+  pod 'Alamofire'
 
   target 'SwiftWeatherDemoTests' do
     inherit! :search_paths
