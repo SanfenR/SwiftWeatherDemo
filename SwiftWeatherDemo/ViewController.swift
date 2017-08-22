@@ -9,7 +9,6 @@
 import UIKit
 import CoreLocation
 import AFNetworking
-import NSDescription
 
 class ViewController: UIViewController, CLLocationManagerDelegate {
 
@@ -72,8 +71,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
                 progress: { (progress: Progress) in print("progress") },
                 success: { (operation: URLSessionDataTask!, responseObject: Any!)
                 in
-                    print("JSON: " + (responseObject as AnyObject).description)
-                    updateUISuccess(responseObject as NSDescription)
+                    self.updateUISuccess(jsonResult:responseObject as! NSDictionary)
                 },
                 failure: { (operation: URLSessionDataTask?, error: Error!)
                 in
@@ -83,7 +81,32 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
 
     }
 
-    private func updateUISuccess(_ v: NSDescription) {
+    private func updateUISuccess(jsonResult: NSDictionary!) {
+        if let temp = (jsonResult["main"] as! NSDictionary)["temp"] as? Double {
+            var temperature: Double
+
+            if((jsonResult["sys"] as! NSDictionary)["country"] as? String == "US") {
+                temperature = round((temp - 273.15) * 1.8 + 32)
+            } else {
+                temperature = round(temp - 273.15)
+            }
+            self.temperature.text = "\(temperature)"
+            self.temperature.font = UIFont.boldSystemFont(ofSize: 60)
+
+            var cityName = jsonResult["name"] as? String
+            self.location.text = "\(cityName)"
+
+            (jsonResult["weather"] as!  NSArray)
+
+
+        } else  {
+
+        }
+
+
+
+
+
 
     }
 
