@@ -85,29 +85,41 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         if let temp = (jsonResult["main"] as! NSDictionary)["temp"] as? Double {
             var temperature: Double
 
-            if((jsonResult["sys"] as! NSDictionary)["country"] as? String == "US") {
-                temperature = round((temp - 273.15) * 1.8 + 32)
-            } else {
-                temperature = round(temp - 273.15)
-            }
+//            if((jsonResult["sys"] as! NSDictionary)["country"] as? String == "US") {
+//                temperature = round((temp - 273.15) * 1.8 + 32)
+//            } else {
+//                temperature = round(temp - 273.15)
+//            }
+
+            temperature = round(temp - 273.15)
+
             self.temperature.text = "\(temperature)"
             self.temperature.font = UIFont.boldSystemFont(ofSize: 60)
+            self.location.text = jsonResult["name"] as? String
 
-            var cityName = jsonResult["name"] as? String
-            self.location.text = "\(cityName)"
+            let weather =  (jsonResult["weather"] as?  NSArray)?[0] as? NSDictionary
 
-            (jsonResult["weather"] as!  NSArray)
+            var condition = weather?["id"] as? Int
+            var sunrise = (jsonResult["sys"] as? NSDictionary)?["sunrise"] as? Double
+            var sunset = (jsonResult["sys"] as? NSDictionary)?["sunset"] as? Double
 
+
+            var isNight = false
+            var nowTime = NSDate().timeIntervalSince1970
+
+            if(nowTime < sunrise! || nowTime > sunset!) {
+                isNight = true
+            }
+
+            updateWeatherIcon(condition!, isNight)
 
         } else  {
 
         }
+    }
 
-
-
-
-
-
+    private func updateWeatherIcon(_ condition: Int, _ isNight: Bool) {
+        //设置天气icon
     }
 
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
